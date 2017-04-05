@@ -11,7 +11,7 @@ int Grafo::acessaPosicao(int i, int j){
         i=j;
         j=aux;
     }
-    return (i*(this->V))+j-i;
+    return (i*(this->V))+(i*(i-1)/2)j-i;
 }
 bool Grafo::adicionaAresta(int i,int j){
     if((i>V) || (j>V)){
