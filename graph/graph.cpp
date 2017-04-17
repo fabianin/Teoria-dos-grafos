@@ -64,5 +64,64 @@ void Grafo::mostraVerticesListaAdj(){
         }
         cout << endl;
     }
+}
+void Grafo::dfs(int v){
+	stack<int> pilha;
+	bool visitados[V];
+	for(int i = 0; i < V; i++)
+		visitados[i] = false;
+ 
+	while(true){
+		if(!visitados[v]){
+			cout << "Visitando vertice " << v << " ...\n";
+			visitados[v] = true; 
+			pilha.push(v); 
+		}
+ 
+		bool achou = false;
+		list<int>::iterator it;
+		for(it = adj[v].begin(); it != adj[v].end(); it++){
+			if(!visitados[*it]){
+				achou = true;
+				break;
+			}
+		}
+ 
+		if(achou)
+			v = *it;
+		else{
+			pilha.pop();
+			if(pilha.empty())
+				break;
+			v = pilha.top();
+		}
+	}
+}
+void Grafo::bfs(int v){
+	queue<int> fila;
+	bool visitados[V]; 
 
+	for(int i = 0; i < V; i++)
+		visitados[i] = false;
+
+	cout << "Visitando vertice " << v << " ...\n";
+	visitados[v] = true; 
+
+	while(true){
+		list<int>::iterator it;
+		for(it = adj[v].begin(); it != adj[v].end(); it++){
+			if(!visitados[*it]){
+				cout << "Visitando vertice " << *it << " ...\n";
+				visitados[*it] = true; 
+				fila.push(*it); 
+			}
+		}
+
+		if(!fila.empty()){
+			v = fila.front();
+			fila.pop();
+		}
+		else
+			break;
+	}
 }

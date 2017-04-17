@@ -19,6 +19,8 @@ class Grafo{
         bool removeAresta(int i, int j);
         int calculaGrauListaAdj(int V);
         bool existeVizinhoListaAdj(int v1, int v2)
+        void dfs(int v);
+        void bfs(int v);
 
 };
 
