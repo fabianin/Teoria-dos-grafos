@@ -3,6 +3,7 @@
 Grafo::Grafo(int V){
     this->V = V;
     madj = (int *)malloc(sizeof(int)*V);
+    ladj = new list<int>[V];
 }
 int Grafo::acessaPosicao(int i, int j){
     int aux;
@@ -42,4 +43,26 @@ void Grafo::mostraVertices(){
         }
     }
         std::cout << endl;
+}
+int Grafo::calculaGrauListaAdj(int V){
+    return ladj[V].size();
+}
+bool Grafo::existeVizinhoListaAdj(int v1, int v2){
+	if(find(ladj[v1].begin(), ladj[v1].end(), v2) != ladj[v1].end())
+		return true;
+	return false;
+}
+void Grafo::adicionaArestaListaAdj(int i,int j){
+    	ladj[v1].push_back(v2);
+       	ladj[v2].push_back(v1);
+}
+void Grafo::mostraVerticesListaAdj(){
+    for(int i=0;i<this->V;i++){
+        cout << i << "-> ";
+        for(iterator::list<int> it = ladj.begin(); it!=ladj.end(); it++){
+            cout << *it << " ";
+        }
+        cout << endl;
+    }
+
 }
